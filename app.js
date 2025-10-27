@@ -99,8 +99,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // f. Chama a biblioteca Tesseract.js
         try {
             const result = await Tesseract.recognize(
-                canvas, // Agora o canvas tem a imagem RECORTADA
-                'eng', 
+                canvas,
+                'eng + por', 
                 { logger: m => console.log(m) }
             );
             
