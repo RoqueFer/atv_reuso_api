@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const result = await Tesseract.recognize(
                 canvas,
-                'eng + por', 
+                'eng+por', 
                 { logger: m => console.log(m) }
             );
             
