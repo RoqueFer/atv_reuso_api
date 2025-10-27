@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador de Cartas (Magic)</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    
+    <script src='https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js'></script>
+
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; padding: 20px; }
+        main { max-width: 600px; margin: auto; }
+        input { width: 60%; padding: 8px; }
+        button { padding: 9px; }
+        #resultado { min-height: 100px; background-color: #f4f4f4; border: 1px solid #ccc; padding: 10px; }
+        
+        #camera-container {
+            border: 2px dashed #ccc;
+            padding: 10px;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        #video {
+            width: 100%;
+            border: 1px solid #333;
+        }
+        #frame-guide {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 70%;
+            border: 2px dashed red;
+            box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.5);
+        }
+        #scan-button {
+            width: 100%;
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <main>
+       
+            <section id="text-search">
+            <h1>Consulta de Cartas - Scryfall API</h1>
+            <p>Digite o nome de uma carta de Magic: The Gathering.</p>
+            <input type="text" id="card-name" placeholder="Ex: Sol Ring">
+            <button id="search-button">Buscar</button>
+            </section>
+    
+
+        <hr>
+
+        <section id="camera-container">
+    <h2>...ou escaneie com a câmera:</h2>
+    <p>Posicione o nome da carta na guia vermelha.</p>
+
+    <div id="video-wrapper">
+        <video id="video" autoplay playsinline></video>
+        <div id="frame-guide"></div> 
+    </div>
+
+    <button id="scan-button">Escanear Carta</button>
+    
+    <canvas id="canvas" style="display: none;"></canvas>
+</section>
+
+        <hr>
+
+        <h2>Resultados:</h2>
+        <div id="resultado">
+            <p>Aguardando busca...</p>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
